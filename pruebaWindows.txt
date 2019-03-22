@@ -1,0 +1,4 @@
+prueba01 
+enter
+123456789
+prueba	pruebaEspacio 
