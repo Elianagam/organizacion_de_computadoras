@@ -1,4 +1,4 @@
-prueba01 
+prueba01  \r\nncolas
 enter
 123456789
 prueba	pruebaEspacio 

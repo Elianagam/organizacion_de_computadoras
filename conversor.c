@@ -31,7 +31,7 @@ int main(){
 		}
 	}
 
-	printf("Se leyo: %s \n", buffer);
+	
 
 	fclose(archivoDeMierda);
 	//free(buffer);
