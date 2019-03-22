@@ -5,8 +5,8 @@
 
 int main(){
 
-	FILE* file = fopen("pruebaWindows.txt", "r");
-	FILE* converted_file = fopen("salida.txt", "w+");
+	FILE* file = fopen("windows1.txt", "r");
+	FILE* converted_file = fopen("salida.txt", "w");
 	char character;
 	long buffer_size = 200;
 	char* buffer = malloc(buffer_size * sizeof(char));
