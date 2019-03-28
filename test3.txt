@@ -1,0 +1,5 @@
+uno \r\n
+dos \n\n\r\n
+tres r\n
+\rn cuatro
+\nr\rn\nrn cinco
