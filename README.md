@@ -1,4 +1,9 @@
-- Abrir un puente entre NetBSD y Linux:
+- Correr pruebas en linux con los comandos
+```
+./pruebas.sh unix2dos <nombre_archivo>
+./pruebas.sh dos2unix <nombre_archivo>
+```
+- Copiar archivos
 ```
 Abrimos dos consolas (un puente tiene dos extremos):
 
@@ -30,13 +35,6 @@ Ahora vamos a abrir el puente desde NetBSD a Linux; por lo que vamos a la consol
 		"scp -p2222 /carpeta/ mi_usuario@172.20.0.1" -notar que después de mi_usuario@ también aparece la ip configurada antes
 
 	Sin importar que forma haga la contraseña que deberé poner es la del OTRO sistema el cuál aparece en bash, si lo hago por la forma 1 entonces uso la pass de root@, en la 2da uso la de Linux.
-
-
-- Correr pruebas en linux con los comandos
 ```
-./pruebas.sh unix2dos <nombre_archivo>
-./pruebas.sh dos2unix <nombre_archivo>
-
-- Copiar archivos
 
 
