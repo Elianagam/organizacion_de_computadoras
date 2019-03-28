@@ -1,0 +1,3 @@
+prueba	123456789
+pruebas
+Pruebas2 ahre 	tabulacion espacio_2
