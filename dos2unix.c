@@ -1,54 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-#define REDIM 2
+const char CONST_CR = '\r';
+const char CONST_NL = '\n';
 
-int main(){
+//Sacar \r antes de cada \r + \n
 
-	FILE* file = fopen("windows1.txt", "r");
-	FILE* converted_file = fopen("salida.txt", "w");
-	char character;
-	long buffer_size = 200;
-	char* buffer = malloc(buffer_size * sizeof(char));
+int main(int cantidadArgs, char* args[]){
 
-	if(!file){
-		fclose(file);
-		free(buffer);
-		return 0;
-	}
-	
-	int i = 0;
-	int j;
+	FILE* f_in = fopen(args[1], "r");
+  if(!f_in)
+    fclose(f_in);
+	FILE* converted_file = fopen("out_u.txt", "w");
 
-	//Windows2Linux 
-	while(!feof(file)){
+	char character, character_2;
 
-		fread(&character, sizeof(char), 1, file);
+  while(!feof(f_in)){
 
-		if (character != '\r'){
-			if (i == buffer_size){
-				char* aux_buffer = malloc(buffer_size * REDIM * sizeof(char));
-				for (j = 0; j<buffer_size; j++){
-					aux_buffer[j] = buffer[j];
-					free(buffer);
-					buffer = aux_buffer;
-				}
-				buffer_size = buffer_size * REDIM;
-			}
-			buffer[i] = character;
-			i++;	
-		}else{
-			fwrite(buffer, 1, sizeof(buffer), converted_file );
-			//printf("un bufer: %s \n", buffer);
-			i = 0;
-			for(int j = 0; j < 200; j++)
-				buffer[j] = '\0';
-		}
-	}
+    fread(&character, sizeof(char), 1, f_in);
 
-	fclose(file);
-	free(buffer);
+    if(character == CONST_CR){
+      fread(&character, sizeof(char), 1, f_in);
+      if(character != CONST_NL)
+        fwrite(&CONST_CR, 1, sizeof(char), converted_file);
+    }
+
+    fwrite(&character, 1, sizeof(char), converted_file);
+  }
+
+  fclose(f_in);
+  fclose(converted_file);
 
 	return 0;
 }
-
