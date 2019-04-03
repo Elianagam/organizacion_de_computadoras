@@ -8,9 +8,14 @@ const char CONST_NL = '\n';
 int main(int cantidadArgs, char* args[]){
 
 	FILE* f_in = fopen(args[1], "r");
-  if(!f_in)
-    fclose(f_in);
+  if(!f_in) return 0;
+
 	FILE* converted_file = fopen("out_u.txt", "w");
+
+  if(!converted_file){
+    fclose(f_in);
+    return 0;
+  }
 
 	char character;
 

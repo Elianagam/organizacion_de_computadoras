@@ -8,20 +8,24 @@ const char CONST_NL = '\n';
 int main(int argsc, char* argv[]){
 
 	FILE* f_in = fopen(argv[1], "r");
-  if(!f_in)
-    fclose(f_in);
+  	if(!f_in) return 0;
 
 	FILE* f_out = fopen("out_w.txt", "w");
 
-	char r_char;
+	if (!f_out){
+		fclose(f_in);
+		return 0;
+	}
+
+	char character;
 
 	while(!feof(f_in)){
 
-		fread(&r_char, sizeof(char), 1, f_in);
-		if(r_char == CONST_NL)
+		fread(&character, sizeof(char), 1, f_in);
+		if(character == CONST_NL)
 			fwrite(&CONST_CR, 1, sizeof(char), f_out);
 
-		fwrite(&r_char, 1, sizeof(char), f_out);
+		fwrite(&character, 1, sizeof(char), f_out);
 	}
 
 	fclose(f_in);
