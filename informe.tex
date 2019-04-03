@@ -35,7 +35,7 @@
 	Nombre & Padrón & Mail \\ \hline 
     Tomas Lopez Hidalgo & & \\ \hline 
     Eliana Gamarra & 100016 & elianagam2@gmail.com\\ \hline
-    Leonardo Bellaera &  & \\ \hline
+    Leonardo Bellaera &  100973 & leobellaera@gmail.com \\ \hline
     \end{tabular}
 	\label{tabla:sencilla}
 	\end{center}
@@ -50,22 +50,17 @@
 
 
 \section{Desarrollo}\label{sec:intro}
-Con la intención de familiarizarnos con el emulador Gxemul de un procesador MIPS se crearon 2 archivos en c:
-dos2unix
-unix2dos
-Ambos con la extención .c se copilaron con gcc y generando un ejecutable con el mismo nombre de archivo
-También dió como resultado sus respectivos códigos asambler en MIPS que luego se traducirá a código de máquina (binario)
+Con la intención de familiarizarnos con el emulador GXemul -un emulador de la arquitectura de computadores MIPS- y NetBSD, desarrollamos dos programas en código C cuyas funciones son parsear archivos de texto UNIX a Windows y viceversa. Llamamos unix2dos al programa encargado de transformar los archivos de texto de UNIX a Windows, y dos2unix al encargado de realizar la operación inversa.
+Ambos fueron compilados con el compilador gcc (...) %terminar
+También se obtuvieron sus respectivos códigos Assembler en MIPS (que luego serán traducidos en código de máquina para ser interpretados por el emulador de la arquitectura MIPS)
 
 \subsection{Preparando el emulador}
 
-Se subieron los siguientes pasos para poder ejecutar NetBSD
+Se ejecutaron los siguientes comandos para poder correr NetBSD bajo el emulador:
 
-sudo su
+sudo su 
 useradd -m gxemul
 passwd gxemul
 
-
-
-\section{Desarrollo}\label{sec:intro}
 
 \end{document}
