@@ -1,0 +1,71 @@
+\documentclass[titlepage,a4paper]{article}
+
+\usepackage{a4wide}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue,bookmarksopen=true]{hyperref}
+\usepackage{bookmark}
+\usepackage{fancyhdr}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+
+\pagestyle{fancy} % Encabezado y pie de página
+\fancyhf{}
+\fancyhead[L]{TP1}
+\fancyhead[R]{FIUBA}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+\begin{titlepage} % Carátula
+    \centering
+    \vfill
+    \Huge \textbf{Trabajo Práctico 1}
+    \vskip2cm
+    \Large [66.20] Organizacion de la Computadora\\
+    Primer cuatrimestre de 2019 
+    \vskip2cm
+    \begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|l|l|}
+	\hline
+    \multicolumn{3}{|c|}{Grupo 2} \\ \hline
+	Nombre & Padrón & Mail \\ \hline 
+    Tomas Lopez Hidalgo & & \\ \hline 
+    Eliana Gamarra & 100016 & elianagam2@gmail.com\\ \hline
+    Leonardo Bellaera &  & \\ \hline
+    \end{tabular}
+	\label{tabla:sencilla}
+	\end{center}
+	\end{table}
+
+    \vfill
+\end{titlepage}
+\tableofcontents % Índice general
+\newpage
+
+\section{Introduccion}\label{sec:intro}
+
+
+\section{Desarrollo}\label{sec:intro}
+Con la intención de familiarizarnos con el emulador Gxemul de un procesador MIPS se crearon 2 archivos en c:
+dos2unix
+unix2dos
+Ambos con la extención .c se copilaron con gcc y generando un ejecutable con el mismo nombre de archivo
+También dió como resultado sus respectivos códigos asambler en MIPS que luego se traducirá a código de máquina (binario)
+
+\subsection{Preparando el emulador}
+
+Se subieron los siguientes pasos para poder ejecutar NetBSD
+
+sudo su
+useradd -m gxemul
+passwd gxemul
+
+
+
+\section{Desarrollo}\label{sec:intro}
+
+\end{document}
