@@ -12,7 +12,7 @@ int main(int cantidadArgs, char* args[]){
     fclose(f_in);
 	FILE* converted_file = fopen("out_u.txt", "w");
 
-	char character, character_2;
+	char character;
 
   while(!feof(f_in)){
 
