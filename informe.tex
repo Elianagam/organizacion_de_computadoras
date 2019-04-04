@@ -99,5 +99,192 @@ $ "scp -p2222 ARCHIVO root@127.0.0.1:/DIRECTORIO/"
 
 la contraseña que deberé poner es la del OTRO sistema el cuál aparece en bash, si lo hago por la forma 1 entonces uso la pass de root@, en la 2da uso la de Linux.
 
+CASOS DE PRUEBA:
 
+ARCHIVO DE PRUEBA Test1_Windows.txt
+\begin{lstlisting}
+$ ./pruebas.sh unix2dos Test1_Windows.txt 
+Prueba unix2dos: linux a windows  con archivo Test1_Windows.txt
+Archivo inicial
+0000000   T   h   i   s       i   s       a       t   e   s   t  \n   H
+0000020   e   l   l   o       w   o   r   l   d           .       .    
+0000040   .       .       .       .       .               H   e   l   l
+0000060   o       w   o   r   l   d  \t   H   e   l   l   o       w   o
+0000100   r   l   d  \t   H   e   l   l   o       w   o   r   l   d  \t
+0000120   H   e   l   l   o       w   o   r   l   d  \t   H   e   l   l
+0000140   o       w   o   r   l   d  \n   T   e   s   t       T   e   s
+0000160   t       T   e   s   t  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n
+0000200  \n  \n   T   E   S   T   I   N   G       T   H   E       S   C
+0000220   R   I   P   T   !   !   !   #   $   \   r   \   x   \   t   \
+0000240   R   \   N   \   r   \   n       #   #   #   #   #   #   #   #
+0000260   #   #   #   #   #      \n  \n  \n  \n  \n  \n   T   E   S   T
+0000300   I   N   G  \t   T   E   S   T   I   N   G       T   E   S   T
+0000320   I   N   G       T   E   S   T   I   N   G       T   E   S   T
+*
+0000440   I   N   G      \n  \n  \n   \   0   \   r   \   n       O   K
+0000460   O   K   O   K  \n  \n   !   !      \n  \n   !
+0000474
+Archivo final
+0000000   T   h   i   s       i   s       a       t   e   s   t  \r  \n
+0000020   H   e   l   l   o       w   o   r   l   d           .       .
+0000040       .       .       .       .       .               H   e   l
+0000060   l   o       w   o   r   l   d  \t   H   e   l   l   o       w
+0000100   o   r   l   d  \t   H   e   l   l   o       w   o   r   l   d
+0000120  \t   H   e   l   l   o       w   o   r   l   d  \t   H   e   l
+0000140   l   o       w   o   r   l   d  \r  \n   T   e   s   t       T
+0000160   e   s   t       T   e   s   t  \r  \n  \r  \n  \r  \n  \r  \n
+0000200  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n
+0000220   T   E   S   T   I   N   G       T   H   E       S   C   R   I
+0000240   P   T   !   !   !   #   $   \   r   \   x   \   t   \   R   \
+0000260   N   \   r   \   n       #   #   #   #   #   #   #   #   #   #
+0000300   #   #   #      \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n
+0000320   T   E   S   T   I   N   G  \t   T   E   S   T   I   N   G    
+0000340   T   E   S   T   I   N   G       T   E   S   T   I   N   G    
+*
+0000460   T   E   S   T   I   N   G      \r  \n  \r  \n  \r  \n   \   0
+0000500   \   r   \   n       O   K   O   K   O   K  \r  \n  \r  \n   !
+0000520   !      \r  \n  \r  \n   !   !
+0000530
+
+
+$ ./pruebas.sh dos2unix out_w.txt 
+Prueba dos2unix: linux a windows  con archivo out_w.txt
+Archivo inicial
+0000000   T   h   i   s       i   s       a       t   e   s   t  \r  \n
+0000020   H   e   l   l   o       w   o   r   l   d           .       .
+0000040       .       .       .       .       .               H   e   l
+0000060   l   o       w   o   r   l   d  \t   H   e   l   l   o       w
+0000100   o   r   l   d  \t   H   e   l   l   o       w   o   r   l   d
+0000120  \t   H   e   l   l   o       w   o   r   l   d  \t   H   e   l
+0000140   l   o       w   o   r   l   d  \r  \n   T   e   s   t       T
+0000160   e   s   t       T   e   s   t  \r  \n  \r  \n  \r  \n  \r  \n
+0000200  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n
+0000220   T   E   S   T   I   N   G       T   H   E       S   C   R   I
+0000240   P   T   !   !   !   #   $   \   r   \   x   \   t   \   R   \
+0000260   N   \   r   \   n       #   #   #   #   #   #   #   #   #   #
+0000300   #   #   #      \r  \n  \r  \n  \r  \n  \r  \n  \r  \n  \r  \n
+0000320   T   E   S   T   I   N   G  \t   T   E   S   T   I   N   G    
+0000340   T   E   S   T   I   N   G       T   E   S   T   I   N   G    
+*
+0000460   T   E   S   T   I   N   G      \r  \n  \r  \n  \r  \n   \   0
+0000500   \   r   \   n       O   K   O   K   O   K  \r  \n  \r  \n   !
+0000520   !      \r  \n  \r  \n   !   !
+0000530
+Archivo final
+0000000   T   h   i   s       i   s       a       t   e   s   t  \n   H
+0000020   e   l   l   o       w   o   r   l   d           .       .    
+0000040   .       .       .       .       .               H   e   l   l
+0000060   o       w   o   r   l   d  \t   H   e   l   l   o       w   o
+0000100   r   l   d  \t   H   e   l   l   o       w   o   r   l   d  \t
+0000120   H   e   l   l   o       w   o   r   l   d  \t   H   e   l   l
+0000140   o       w   o   r   l   d  \n   T   e   s   t       T   e   s
+0000160   t       T   e   s   t  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n
+0000200  \n  \n   T   E   S   T   I   N   G       T   H   E       S   C
+0000220   R   I   P   T   !   !   !   #   $   \   r   \   x   \   t   \
+0000240   R   \   N   \   r   \   n       #   #   #   #   #   #   #   #
+0000260   #   #   #   #   #      \n  \n  \n  \n  \n  \n   T   E   S   T
+0000300   I   N   G  \t   T   E   S   T   I   N   G       T   E   S   T
+0000320   I   N   G       T   E   S   T   I   N   G       T   E   S   T
+*
+0000440   I   N   G      \n  \n  \n   \   0   \   r   \   n       O   K
+0000460   O   K   O   K  \n  \n   !   !      \n  \n   !   !   !
+0000476
+\end{lstlisting}
+
+Caso de prueba con Test2_Windows.txt
+\begin{lstlisting}
+ $ ./pruebas.sh unix2dos Test2_Windows.txt 
+Prueba unix2dos: linux a windows  con archivo Test2_Windows.txt
+Archivo inicial
+0000000   \   r   \   n           #   w   e       d   o   n   '   t    
+0000020   w   a   n   t       t   h   i   s       c   h   a   r   a   c
+0000040   t   e   r   s       b   e       r   e   a   d   e   n       a
+0000060   s       a       l   i   n   e   -   b   r   e   a   k    
+0000077
+Archivo final
+0000000   \   r   \   n           #   w   e       d   o   n   '   t    
+0000020   w   a   n   t       t   h   i   s       c   h   a   r   a   c
+0000040   t   e   r   s       b   e       r   e   a   d   e   n       a
+0000060   s       a       l   i   n   e   -   b   r   e   a   k        
+0000100
+$ ./pruebas.sh dos2unix out_w.txt 
+Prueba dos2unix: linux a windows  con archivo out_w.txt
+Archivo inicial
+0000000   \   r   \   n           #   w   e       d   o   n   '   t    
+0000020   w   a   n   t       t   h   i   s       c   h   a   r   a   c
+0000040   t   e   r   s       b   e       r   e   a   d   e   n       a
+0000060   s       a       l   i   n   e   -   b   r   e   a   k        
+0000100
+Archivo final
+0000000   \   r   \   n           #   w   e       d   o   n   '   t    
+0000020   w   a   n   t       t   h   i   s       c   h   a   r   a   c
+0000040   t   e   r   s       b   e       r   e   a   d   e   n       a
+0000060   s       a       l   i   n   e   -   b   r   e   a   k        
+0000100    
+0000101
+
+\end{lstlisting}
+CASO DE PRUEBA CON ARCHIVO Test3_Windows.txt 
+
+\begin{lstlisting}
+$ ./pruebas.sh unix2dos Test3_Windows.txt 
+Prueba unix2dos: linux a windows  con archivo Test3_Windows.txt
+Archivo inicial
+0000000   T   E   S   T   3  \n  \n   T   E   S   T   I   N   G   3  \n
+0000020  \n   \   r   \   n       \   r   \   n       \   n       \   r
+0000040           #   w   e       d   o   n   '   t       w   a   n   t
+0000060       t   h   i   s       c   h   a   r   a   c   t   e   r   s
+0000100       b   e       r   e   a   d   e   n       a   s       s   p
+0000120   e   c   i   a   l       c   h   a   r   a   c   t   e   r   s
+0000140  \n  \n   T   E   S   T  \n  \n   _   _   _   _   _   _   _   _
+0000160   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+*
+0000240   _   _   _  \n  \n   T  \n  \n   E  \n  \n   S  \n  \n   T  \n
+0000260  \n   I  \n  \n   N  \n  \n   G
+0000270
+Archivo final
+0000000   T   E   S   T   3  \r  \n  \r  \n   T   E   S   T   I   N   G
+0000020   3  \r  \n  \r  \n   \   r   \   n       \   r   \   n       \
+0000040   n       \   r           #   w   e       d   o   n   '   t    
+0000060   w   a   n   t       t   h   i   s       c   h   a   r   a   c
+0000100   t   e   r   s       b   e       r   e   a   d   e   n       a
+0000120   s       s   p   e   c   i   a   l       c   h   a   r   a   c
+0000140   t   e   r   s  \r  \n  \r  \n   T   E   S   T  \r  \n  \r  \n
+0000160   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+*
+0000240   _   _   _   _   _   _   _   _   _   _   _  \r  \n  \r  \n   T
+0000260  \r  \n  \r  \n   E  \r  \n  \r  \n   S  \r  \n  \r  \n   T  \r
+0000300  \n  \r  \n   I  \r  \n  \r  \n   N  \r  \n  \r  \n   G   G
+0000317
+$ ./pruebas.sh dos2unix out_w.txt 
+Prueba dos2unix: linux a windows  con archivo out_w.txt
+Archivo inicial
+0000000   T   E   S   T   3  \r  \n  \r  \n   T   E   S   T   I   N   G
+0000020   3  \r  \n  \r  \n   \   r   \   n       \   r   \   n       \
+0000040   n       \   r           #   w   e       d   o   n   '   t    
+0000060   w   a   n   t       t   h   i   s       c   h   a   r   a   c
+0000100   t   e   r   s       b   e       r   e   a   d   e   n       a
+0000120   s       s   p   e   c   i   a   l       c   h   a   r   a   c
+0000140   t   e   r   s  \r  \n  \r  \n   T   E   S   T  \r  \n  \r  \n
+0000160   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+*
+0000240   _   _   _   _   _   _   _   _   _   _   _  \r  \n  \r  \n   T
+0000260  \r  \n  \r  \n   E  \r  \n  \r  \n   S  \r  \n  \r  \n   T  \r
+0000300  \n  \r  \n   I  \r  \n  \r  \n   N  \r  \n  \r  \n   G   G
+0000317
+Archivo final
+0000000   T   E   S   T   3  \n  \n   T   E   S   T   I   N   G   3  \n
+0000020  \n   \   r   \   n       \   r   \   n       \   n       \   r
+0000040           #   w   e       d   o   n   '   t       w   a   n   t
+0000060       t   h   i   s       c   h   a   r   a   c   t   e   r   s
+0000100       b   e       r   e   a   d   e   n       a   s       s   p
+0000120   e   c   i   a   l       c   h   a   r   a   c   t   e   r   s
+0000140  \n  \n   T   E   S   T  \n  \n   _   _   _   _   _   _   _   _
+0000160   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+*
+0000240   _   _   _  \n  \n   T  \n  \n   E  \n  \n   S  \n  \n   T  \n
+0000260  \n   I  \n  \n   N  \n  \n   G   G   G
+0000272
+  
+\end{lstlisting}
 \end{document}
