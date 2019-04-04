@@ -54,13 +54,50 @@ Con la intención de familiarizarnos con el emulador GXemul -un emulador de la a
 Ambos fueron compilados con el compilador gcc (...) %terminar
 También se obtuvieron sus respectivos códigos Assembler en MIPS (que luego serán traducidos en código de máquina para ser interpretados por el emulador de la arquitectura MIPS)
 
-\subsection{Preparando el emulador}
+\subsection{Configuracion del entorno de trabajo}
 
-Se ejecutaron los siguientes comandos para poder correr NetBSD bajo el emulador:
+Con la intención de familiarizarnos con el emulador Gxemul de un procesador MIPS se crearon 2 archivos en c:
+dos2unix
+unix2dos
+Ambos con la extensión .c se compilaron con gcc y generando un ejecutable con el mismo nombre de archivo
+También dió como resultado sus respectivos códigos assembler en MIPS que luego se traducirá a código de máquina (binario)
 
-sudo su 
+Se subieron los siguientes pasos para poder ejecutar NetBSD
+
+sudo su
 useradd -m gxemul
 passwd gxemul
+
+Una vez configurado el usuario, se agrega una dirección IP con el comando:
+ifconfig lo:0 172.20.0.1, para la máquina de emulacion de MIPS que se corren con la imagen proporcionada por la catedra que contiene la imagen de NetBSD
+\begin{lstlisting}
+$ ./gxemul -e 3max -d netbsd-pmax.img
+ completando user y pass con
+	user : root
+	contraseña : orga6620
+
+\end{lstlisting}
+Para conectar nuestra consola de NETBSD  a Linux se hace un puente con ssh, dentro de la imagen de NetBSD abierta con el anterior comando
+$ ssh -R 2222:127.0.0.1:22 <userLinux>@172.20.0.1	 (user debe reemplazarse por el usuario de la sesión actual)
+
+Desde una nueva consola de Linux (en la que no está abierto NetBSD) $ ssh -p 2222 root@127.0.0.1 en donde nos va a pedir la contraseña de root (que es orga6620). Una vez aceptado y elegimos la terminal xterm
+	
+Entonces hasta ahora lo que creamos es una ventana (por la cual miramos) desde NetBSD (1° consola) a Linux (vemos como si estuviesemos en Linux); y otra de Linux a NetBSD (2° consola) vemos el usuario root.
+
+Para poder copiar archivos que .c que programamos en linux vamos a hacer 
+\begin{lstlisting}
+scp -p2222 [-r: para carpetas] origen destino
+
+\end{lstlisting}
+Voy a la consola en que "veo" Linux (1° consola, aquella en que abri NetBSD)
+
+\begin{lstlisting}
+$ "scp -p2222 ARCHIVO root@127.0.0.1:/DIRECTORIO/"
+\end{lstlisting}
+(notar que después de root@ lo que aparece es la ip que definimos antes en Linux)
+
+
+la contraseña que deberé poner es la del OTRO sistema el cuál aparece en bash, si lo hago por la forma 1 entonces uso la pass de root@, en la 2da uso la de Linux.
 
 
 \end{document}
