@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 const char CONST_CR = '\r';
 const char CONST_NL = '\n';
@@ -7,10 +8,14 @@ const char CONST_NL = '\n';
 
 int main(int argsc, char* argv[]){
 
+	char str[80] = "out_";
+
+	strcat(str, argv[1]);
+
 	FILE* f_in = fopen(argv[1], "r");
   	if(!f_in) return 0;
 
-	FILE* f_out = fopen("out_w.txt", "w");
+	FILE* f_out = fopen(str, "w");
 
 	if (!f_out){
 		fclose(f_in);
