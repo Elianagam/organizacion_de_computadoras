@@ -28,7 +28,6 @@ unix2dos:
     li		$v0, 14 	# leer archivo
     move 	$a0, $s6	# file descriptor
     la		$a1, buffer	# buffer del cual leer
-    li 		$a2, 11 	# hardcoded buffer length
     syscall			# se abre en v0
 
     # cerrar archivo
@@ -36,22 +35,3 @@ unix2dos:
     move	$a0, $s6
     syscall
 
-
-# copy paste de algun lado...
-loop:  
-    li		$v0, 12       
-    syscall            # Read Character
-
-    addiu 	$a0, $v0, 1  	# $a0 gets the next char
-
-    li		$v0, 11       
-    syscall            		# Write Character
-
-    b loop
-    nop
-# **** otro codigo
-    li      $t2, 0
-strLen:				#getting length of string
-    lb      $t0, buffer($t2)	#loading value
-    add     $t2, $t2, 1
-bne     $t0, $zero, strLen
