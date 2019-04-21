@@ -30,7 +30,7 @@ int main(){
 	while(read(fd_in, &character, 1)){
 
       	if(character == CONST_NL)
-        	write(fd_out, &CONST_NL, 1);
+        	write(fd_out, &CONST_CR, 1);
 
     	write(fd_out, &character, 1);
 	}
