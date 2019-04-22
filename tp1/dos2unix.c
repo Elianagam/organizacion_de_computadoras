@@ -7,7 +7,7 @@
 const char* archivo_in = "dos2unix_test.txt";
 const char* archivo_out = "out_dos2unix_test.txt";
 
-const char* OPEN_ERROR = "Error de apertura al abrir archivo";
+const char* OPEN_ERROR = "Error de apertura al abrir archivo \n";
 
 const char CONST_CR = '\r';
 const char CONST_NL = '\n';
@@ -18,15 +18,17 @@ int main(){
 
 	int fd_in = open(archivo_in, O_RDONLY);
 
-	if(fd_in == -1)
-		write(2, OPEN_ERROR, 18);
+	if(fd_in == -1){
+		write(2, OPEN_ERROR, 20);
+		return -1;
+	}
 
-	int fd_out = open(archivo_out, O_WRONLY);
+	int fd_out = open(archivo_out, O_CREAT | O_WRONLY);
 
 	if(fd_out == -1){
-		write(2, OPEN_ERROR, 18);
-		close(fd_out);
-		return 0;
+		write(2, OPEN_ERROR, 20);
+		close(fd_in);
+		return -1;
 	}
 
 	char character;
@@ -36,15 +38,16 @@ int main(){
 	while(read(fd_in, &character, 1)){
 
 		if(character == CONST_CR){
-      		read(fd_in, &character, 1);
-      		if(character != CONST_NL)
-        		write(fd_out, &character, 1);
-    	}
+      			read(fd_in, &character, 1);
+	      		if(character != CONST_NL)
+        			write(fd_out, &character, 1);
+	    	}
 
-    	write(fd_out, &character, 1);
+    		write(fd_out, &character, 1);
 	}
 
 	close(fd_out);
 	close(fd_in);
 	return 0;
 }
+
