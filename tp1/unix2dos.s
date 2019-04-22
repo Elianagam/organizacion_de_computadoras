@@ -11,8 +11,8 @@
 
 const_rc: 	.asciiz '\r'
 const_nl: 	.asciiz '\n'
-file_test: 	.asciiz "out_w.txt"
-file_out_w: 	.asciiz "test.txt"
+file_out_w: 	.asciiz "out_w.txt"
+file_test: 	.asciiz "test.txt"
 buffer:		.space 1024
 .text
 
@@ -21,17 +21,45 @@ unix2dos:
     .set 	noreorder
     .cpload 	$t9
     .set 	reorder
-    sibu 	sp, sp, BIT_FRAME
-    .aprestore 	24		# sw gp 24(sp) # ni idea que hace esto
-    
-    #read from file
-    li		$v0, 14 	# leer archivo
-    move 	$a0, $s6	# file descriptor
-    la		$a1, buffer	# buffer del cual leer
-    li 		$a2, 11 	# hardcoded buffer length
-    syscall			# se abre en v0
+    subu 	sp, sp, BIT_FRAME
+    .caprestore 	24		# sw gp 24(sp)
 
-    # cerrar archivo
+    sw		$fp, 28(sp)
+    sw		ra, 32(sp)
+    move	$fp, sp
+    sw		a0, BIT_FRAME($fp)
+    
+read:    # abrir archivo para lectura
+    li   	v0, 13       	# system call para abrir archivo
+    la   	a0, file_test  # nombre archivo
+    li   	a1, 0        	# leer = 0
+    li   	a2, 0        	# mode ignorar
+    syscall			
+    move 	s0, v0      	# guardo el file descriptor 
+    
+    # leer del archivo
+    li		v0, 14 	# leer archivo
+    move 	a0, s0	# file descriptor
+    la		a1, buffer	# buffer del cual leer esta en a1
+    li 		a2, 11 	# hardcoded buffer length
+    syscall			# se abre en v0 # $v0 set to -1 if error
+
+    la      s3, a1		# guardar buffer leida en s3
+    addi    s1, zero, 0	# $s1 = i = 0
+
+while:    # iterar buffer
+    add     t2, s3, s1           # $t2 = buffer[i]
+    lb      t3, 0(t2)             # $t3 = elements[i]
+    beq     t3, zero, fin_while   # test if for loop is done
+    addi    t6, zero, const_nl	# t6 = \n
+    bneq	t3, t6, write_char	# salta si t3 != \n 
+	# escribir \r en t3
+write_char:
+	# escribir \n en t3 +1
+
+
+
+close:    # cerrar archivo
     li		$v0, 16
     move	$a0, $s6
     syscall
