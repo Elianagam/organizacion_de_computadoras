@@ -1,0 +1,8 @@
+root@:~/tp0# od -t c test.txt 
+0000000    h   o   l   a       m   u   n   d   o  \n   c   o   m   o    
+0000020    e   s   t   a   n   ?  \n  \n                                
+0000030
+root@:~/tp0# od -t c out_w.txt 
+0000000    h   o   l   a       m   u   n   d   o  \r  \n   c   o   m   o
+0000020        e   s   t   a   n   ?  \r  \n  \r  \n                    
+0000033
