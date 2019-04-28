@@ -22,7 +22,7 @@ else
 echo Running testings dos2unix...
 
   for ((i=1; i<=$2; i++)); do
-		./dos2unix <$TEST_DOS2UNIX$i.txt >temp.a.$i.txt || break
+    ./dos2unix <$TEST_DOS2UNIX$i.txt >temp.a.$i.txt || break
     ./unix2dos <temp.a.$i.txt >temp.b.$i.txt || break
     diff -q $TEST_DOS2UNIX$i.txt temp.b.$i.txt || break
     rm -f temp.*
