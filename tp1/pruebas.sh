@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEST_UNIX2DOS = "test_unix2dos_" 
+TEST_UNIX2DOS = "test_unix2dos_"
 OUT_UNIX2DOS = "out_unix2dos_"
 TEST_DOS2UNIX = "test_dos2unix_"
 OUT_DOS2UNIX = "out_dos2unix_"
