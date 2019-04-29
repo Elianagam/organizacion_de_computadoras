@@ -10,9 +10,5 @@
     ...
  
 ### 3) Por último se ejecuta con el siguiente comando
-    ./pruebas_automaticas_dos2unix.sh cant_archivos_a_probar (notar que se le pasa por parámetro la cantidad de archivos a probar)
-    
-    
-### 4) Voilá!
-    
+    ./pruebas_automaticas_dos2unix.sh cant_archivos_a_probar (notar que se le pasa por parámetro la cantidad de archivos a probar. 
 
