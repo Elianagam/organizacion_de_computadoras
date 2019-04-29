@@ -1,5 +1,5 @@
 
-### 1) Primero entregar permisos al script con el siguiente comando (es similar para dos2unix)
+### 1) Primero entregar permisos al script con el siguiente comando (es similar para unix2dos)
     chmod +x pruebas_automaticas_dos2unix.sh
 
 ### 2) Si se corren las pruebas de dos2unix deben existir los siguientes archivos (es similar para unix2dos)
