@@ -1,0 +1,9 @@
+hola, estamos probando un sistema
+
+dos, hacia un sistema unix
+
+uno 
+
+dos	tres
+
+cuatro

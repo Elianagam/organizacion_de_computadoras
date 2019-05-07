@@ -3,17 +3,17 @@
 
 	.rdata
 
-	W_ERROR: 	.asciiz "Error en escritura\n"
-	R_ERROR:	.asciiz	"Error de lectura\n"
+	W_ERROR: 	.asciiz "Error en escritura\n"  # No requieren alineacion por ser ascii 
+	R_ERROR:	.asciiz	"Error de lectura\n"	# ya tiene alineacion por byte
 	CONST_CR: 	.ascii "\r"
 	CONST_NL: 	.ascii "\n"
 
 	.data
-
 	character: 	.byte 1
 
 	.text
-	.equ 		BIT_FRAME, 40	# Tamaño del stackframe
+	.equ 		BIT_FRAME, 8	# Tenemos una funcion leaf, a la que no se le pasan
+					# parametros, 2 (SRA) es nuestro tamanio de stackframe
 	.abicalls
 	.align 2
 
@@ -32,8 +32,8 @@ main:
 
 	.cprestore 24
 
+	sw 	gp, 24(sp)
 	sw	$fp, 28(sp)
-	sw	ra, 32(sp)
 
 	move	$fp, sp
 
@@ -88,7 +88,6 @@ end_program:
 
 	lw	gp,  24(sp)
 	lw	$fp, 28(sp)
-	lw	ra,  32(sp)
 
 	addu 	sp,  sp, BIT_FRAME
 	and  	v0,  v0, 0    	 	# Return 0

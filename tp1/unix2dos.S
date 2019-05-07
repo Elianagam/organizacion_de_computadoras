@@ -14,7 +14,7 @@
     character:	.byte	1
 
     .text
-    .equ BIT_FRAME, 40 		# puede que necesite mas
+    .equ BIT_FRAME, 8	# 2 (SRA), funcion leaf, sin ABA y no usamos LTA
     .abicalls
     .align 2
 
@@ -30,10 +30,10 @@ main:
 
     subu 	sp, sp, BIT_FRAME
 
-    .cprestore 	24		# sw gp 24(sp)
+    .cprestore 	24	
 
+    sw 		gp, 24(sp)
     sw		$fp, 28(sp)
-    sw		ra,  32(sp)
     move	$fp, sp
 
     sw		a0, BIT_FRAME($fp)
@@ -81,7 +81,6 @@ end_program:
 
     lw  	gp, 24(sp)
     lw 		$fp, 28(sp)
-    lw  	ra, 32(sp)
 
     and  	v0, v0, 0     #   Return 0
     addu    	sp, sp, BIT_FRAME
