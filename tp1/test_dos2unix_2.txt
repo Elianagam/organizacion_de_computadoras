@@ -1,8 +1,9 @@
-esto es una prueba desde un sistema dos
+hola, estamos probando un sistema
 
-uno dos probando!!		uno dos
-pongo tabulaciones				dos tres
+dos, hacia un sistema unix
 
+uno 
 
+dos	tres
 
-cuatro cinco
+cuatro

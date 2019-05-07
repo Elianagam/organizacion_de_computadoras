@@ -1,8 +1,8 @@
-otra prueba desde sistema dossss
-		
-tress
-			cuatro
-hello
-world
+esto es una prueba desde windows 
 
-hello world
+podemos ver como cambian las cosas
+
+desde
+un
+sistema
+operativo, hacia otro	,	insertamos tabulaciones, y espacios
