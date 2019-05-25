@@ -30,10 +30,9 @@ main:
 
     subu 	sp, sp, BIT_FRAME
 
-    .cprestore 	24	
+    .cprestore 	4	
 
-    sw 		gp, 24(sp)
-    sw		$fp, 28(sp)
+    sw		$fp, 8(sp)
     move	$fp, sp
 
     sw		a0, BIT_FRAME($fp)
@@ -79,8 +78,8 @@ write_char:
 
 end_program:
 
-    lw  	gp, 24(sp)
-    lw 		$fp, 28(sp)
+    lw  	gp, 4(sp)
+    lw 		$fp, 8(sp)
 
     and  	v0, v0, 0     #   Return 0
     addu    	sp, sp, BIT_FRAME
